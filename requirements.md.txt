@@ -1,0 +1,121 @@
+Entity-Relationship Diagram Specification for Airbnb Booking System
+
+This document outlines the entities, attributes, and relationships used to model the database for an Airbnb-style booking platform.
+
+Entities and Attributes
+
+User
+
+user_id (Primary Key)
+
+name
+
+email
+
+phone
+
+password
+
+role (guest or host)
+
+created_at
+
+Property
+
+property_id (Primary Key)
+
+title
+
+description
+
+location
+
+price_per_night
+
+host_id (Foreign Key referencing User)
+
+created_at
+
+Booking
+
+booking_id (Primary Key)
+
+user_id (Foreign Key referencing User)
+
+property_id (Foreign Key referencing Property)
+
+start_date
+
+end_date
+
+status (confirmed, cancelled, pending)
+
+created_at
+
+Payment
+
+payment_id (Primary Key)
+
+booking_id (Foreign Key referencing Booking)
+
+amount
+
+method (e.g., card, PayPal)
+
+status (paid, failed, refunded)
+
+payment_date
+
+Review
+
+review_id (Primary Key)
+
+user_id (Foreign Key referencing User)
+
+property_id (Foreign Key referencing Property)
+
+rating (1–5)
+
+comment
+
+review_date
+
+Amenity (Optional)
+
+amenity_id (Primary Key)
+
+name
+
+description
+
+PropertyAmenity (Join table for many-to-many relationship)
+
+property_id (Foreign Key referencing Property)
+
+amenity_id (Foreign Key referencing Amenity)
+
+Relationships Between Entities
+
+A user can make multiple bookings (User to Booking: One-to-Many)
+
+A host (user) can list multiple properties (User to Property: One-to-Many)
+
+A property can be booked multiple times (Property to Booking: One-to-Many)
+
+Each booking has one payment (Booking to Payment: One-to-One)
+
+Users can leave multiple reviews on different properties (User to Review: One-to-Many)
+
+Properties can receive multiple reviews from different users (Property to Review: One-to-Many)
+
+Properties can have multiple amenities, and amenities can belong to multiple properties (Property to Amenity: Many-to-Many via PropertyAmenity)
+
+Diagram Notes
+
+Primary keys are underlined in the diagram
+
+Foreign keys are italicized and labeled with their references
+
+Relationships are shown using crow’s foot notation to indicate cardinality
+
+Arrows are labeled with relationship names (e.g., “books”, “lists”, “reviews”) for clarity
