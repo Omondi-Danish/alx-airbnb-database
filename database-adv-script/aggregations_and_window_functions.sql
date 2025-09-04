@@ -14,7 +14,7 @@ GROUP BY
 ORDER BY 
     total_bookings DESC;
 
--- 🪜 Window Function Query:
+-- 🪜 Window Function Query: RANK
 -- Rank properties based on the total number of bookings they have received
 
 SELECT 
@@ -30,3 +30,20 @@ GROUP BY
     properties.id, properties.name
 ORDER BY 
     booking_rank ASC;
+
+-- 🪜 Window Function Query: ROW_NUMBER
+-- Assign a unique row number to each property based on booking count
+
+SELECT 
+    properties.id AS property_id,
+    properties.name AS property_name,
+    COUNT(bookings.id) AS booking_count,
+    ROW_NUMBER() OVER (ORDER BY COUNT(bookings.id) DESC) AS booking_row_number
+FROM 
+    properties
+LEFT JOIN 
+    bookings ON properties.id = bookings.property_id
+GROUP BY 
+    properties.id, properties.name
+ORDER BY 
+    booking_row_number ASC;
