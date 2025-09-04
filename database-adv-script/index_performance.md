@@ -31,6 +31,13 @@ Based on common query patterns (JOINs, WHERE filters, ORDER BY), the following c
 
 ---
 
+EXPLAIN SELECT * 
+FROM bookings 
+JOIN users ON bookings.user_id = users.id 
+WHERE bookings.booking_date > '2025-01-01' 
+ORDER BY bookings.booking_date DESC;
+
+
 ## 🛠️ Step 2: Create Indexes
 
 The following SQL commands are saved in `database_index.sql`:
