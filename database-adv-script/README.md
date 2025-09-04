@@ -90,6 +90,52 @@ Finds users who have made more than 3 bookings.
 
 ---
 
+
+# SQL Aggregation & Window Functions – Airbnb Database
+
+## 📁 Repository: `alx-airbnb-database`
+### 📂 Directory: `database-adv-script`
+### 📄 Files:
+- `aggregations_and_window_functions.sql`
+- `README.md`
+
+---
+
+## 🎯 Objective
+
+Use SQL aggregation and window functions to analyze booking data in the Airbnb-style database.
+
+---
+
+## 📌 Queries Included
+
+### 1. Total Bookings per User (Aggregation)
+Uses `COUNT()` and `GROUP BY` to calculate how many bookings each user has made.  
+**Sorted by:** Most active users first (`ORDER BY total_bookings DESC`)
+
+### 2. Property Ranking by Bookings (Window Function)
+Uses `RANK()` to rank properties based on how many bookings they’ve received.  
+**Sorted by:** Highest-ranked properties first (`ORDER BY booking_rank ASC`)
+
+---
+
+## 🛠️ How to Run
+
+1. Open your SQL client (e.g. MySQL Workbench, pgAdmin, or VS Code with SQL extension).
+2. Connect to your Airbnb-style database.
+3. Open `aggregations_and_window_functions.sql`.
+4. Run each query individually to view results.
+
+---
+
+## 🧠 Notes
+
+- Ensure your tables (`users`, `bookings`, `properties`) exist and are populated.
+- Window functions like `RANK()` require SQL engines that support analytic functions (e.g. PostgreSQL, SQL Server, MySQL 8+).
+
+---
+
+
 ## 👨‍💻 Author
 
 Danish Omondi – ALX Backend Engineering Student  
